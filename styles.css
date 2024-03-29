@@ -483,6 +483,10 @@ body.night-mode .game-menu {
     transform: translate(-50%, 0);
 }
 
+body.night-mode #achievementIcon {
+    filter: invert(1);
+}
+
 @keyframes shake {
      0% { transform: translate(0, 0); }
      10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 0); }
