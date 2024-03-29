@@ -333,7 +333,7 @@ function handleAttack() {
         const elapsedTime = now - lastAttackTime; // Calculate the time elapsed since the last click
 
         // Set anti auto clicker restriction
-        if (elapsedTime >= 175) {
+        if (elapsedTime >= 100) {
             currentBossHP -= clickValue;
             updateBossHP();
             animateButtonClick('attackBtn');
