@@ -1,0 +1,518 @@
+body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      overflow-x: hidden;
+      zoom: 95%;
+}
+
+body.night-mode {
+     background-color: #121212;
+     color: #ffffff;
+}
+
+#attackBtn {
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#attackBtn:hover {
+    background-color: darkred;
+}
+
+#boostBtn, #boost2Btn, #auto1Btn, #auto2Btn, #magneticFieldBtn, #auto3Btn, #boost3Btn, #auto4Btn, #fireBtn {
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#boost2Btn, #boost3Btn, #auto1Btn, #auto2Btn, #magneticFieldBtn, #auto3Btn, #auto4Btn {
+    display: none;
+    margin: 0 5px;
+}
+
+#auto1Btn, #auto2Btn, #auto3Btn {
+    margin: 0 5px;
+}
+
+#auto4Btn.purchased::after {
+    content: "ONLINE";
+    color: green;
+    margin-left: 5px;
+}
+
+#buttonContainer {
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#autoContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#autoContainer button {
+    margin: 0 5px;
+}
+
+#specialContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#specialContainer button {
+    margin: 0 5px;
+}
+
+.ready-to-boost {
+    background-color: green;
+    color: white;
+    animation: pulsate 1s infinite;
+}
+
+.ready-to-boost2 {
+    background-color: green;
+    color: white;
+    animation: pulsate 1s infinite;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 20px auto 0;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 10px;
+    background-color: #4caf50;
+    transition: width 0.5s;
+    max-width: 100%;
+}
+
+.milestone {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: #cccccc;
+}
+
+#reconstructing {
+    font-weight: bold;
+    color: red;
+    display: none;
+}
+
+#shield {
+    color: blue;
+    visibility: hidden;
+}
+
+body.night-mode #shield {
+    color: #48DEFF;
+}
+
+.shield-active {
+    animation: pulsate 1s infinite;
+}
+
+.shield-pulsate {
+    animation: shieldPulsate 1s infinite;
+}
+
+#countdownTimer {
+    margin-bottom: 10px;
+}
+
+#fireBtn {
+    display: block;
+    margin: auto;
+}
+
+.toggle-container {
+    position: fixed;
+    top: 50px;
+    right: 90px;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.ball {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.night-mode .ball {
+    transform: translateX(30px);
+}
+
+.audio-toggle {
+    position: fixed;
+    top: 107px;
+    right: 90px;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.audio-toggle .ball {
+    transform: translateX(0);
+}
+
+.audio-on .ball {
+    transform: translateX(30px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.overlay-text {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    z-index: 10000;
+}
+
+.toggle-onoff1 {
+    position: fixed;
+    top: 85px;
+    right: 95px;
+    font-size: 16px;
+    color: #666;
+}
+
+body.night-mode .toggle-onoff1 {
+    color: #ccc;
+}
+
+.toggle-onoff2 {
+    position: fixed;
+    top: 143px;
+    right: 95px;
+    font-size: 16px;
+    color: #666;
+}
+
+body.night-mode .toggle-onoff2 {
+    color: #ccc;
+}
+
+.toggle-nightMode {
+    position: fixed;
+    top: 57px;
+    right: 155px;
+    font-size: 16px;
+    color: #666;
+}
+
+body.night-mode .toggle-nightMode {
+    color: #ccc;
+}
+
+.toggle-soundtoggle {
+    position: fixed;
+    top: 115px;
+    right: 155px;
+    font-size: 16px;
+    color: #666;
+}
+
+body.night-mode .toggle-soundtoggle {
+    color: #ccc;
+}
+
+.monospace-bold {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 19px;
+}
+.optima-bold {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pulsating-button {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.pulsating-button.ready-to-boost {
+    background-color: green;
+    color: white;
+    animation: pulsate 1s infinite;
+}
+
+.pulsating-button.purchased::after {
+    content: "ONLINE";
+    color: green;
+    margin-left: 5px;
+}
+
+.hamburger-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.bar {
+    width: 100%;
+    height: 4px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+.game-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+    z-index: 999;
+    padding-top: 50px;
+}
+
+.game-menu.open {
+    left: 0;
+}
+
+.menu-content {
+    padding: 40px;
+}
+
+body.night-mode .game-menu {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+#tier1Text {
+    display: none;
+    position: relative;
+    top: 12px;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+#tier2Text {
+    display: none;
+    position: relative;
+    top: 12px;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.btn-flip {
+    opacity: 1;
+    outline: 0;
+    color: #fff;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    height: 40px;
+    max-width: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+    perspective: 600px;
+    transition-duration: 0.5s;
+}
+
+.btn-flip:hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+    transition-duration: 0.5s;
+}
+
+.btn-flip:hover:before {
+    opacity: 0;
+    transform: translateY(0) rotateX(90deg);
+    transition-duration: 0.5s;
+}
+
+.btn-flip:after {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: #323237;
+    display: block;
+    transition-duration: 0.5s;
+    position: absolute;
+    background: #adadaf;
+    content: attr(data-back);
+    transform-origin: top center;
+    transform: translateY(-100%) rotateX(-90deg);
+    line-height: 40px;
+}
+
+.btn-flip:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: #adadaf;
+    display: block;
+    padding: 0 30px;
+    line-height: 40px;
+    transition-duration: 0.5s;
+    position: relative;
+    background: #323237;
+    content: attr(data-front);
+    transform-origin: bottom center;
+    transform: translateY(0) rotateX(0deg);
+}
+
+.tooltip {
+    position: fixed;
+    top: 200px;
+    right: 70px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 16px;
+    opacity: 0;
+    font-size: 16px;
+    max-width: 245px;
+    text-align: left;
+    visibility: hidden;
+    font-family: monospace;
+    transition: opacity 1.5s, visibility 1.5s;
+    z-index: 1000;
+}
+
+#boostBtn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#boost3Btn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#boost2Btn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#auto1Btn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#auto2Btn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#auto4Btn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#auto3Btn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+#magneticFieldBtn:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+#achievementPopupContainer {
+    position: fixed;
+    align-items: center;
+    z-index: 9999;
+}
+
+#achievementIcon {
+    height: 30px;
+    position: fixed;
+    bottom: 13vh; /* 5% of the viewport height */
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@keyframes shake {
+     0% { transform: translate(0, 0); }
+     10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 0); }
+     20%, 40%, 60%, 80%, 100% { transform: translate(5px, 0); }
+}
+
+.shake-animation {
+     animation: shake 0.5s ease-in-out 3;
+}
+
+@keyframes pulsate {
+     0% {
+         transform: scale(1);
+     }
+     50% {
+         transform: scale(1.1);
+     }
+     100% {
+         transform: scale(1);
+     }
+}
+
+@keyframes shieldPulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.025);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
