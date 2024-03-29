@@ -60,4 +60,4 @@ Early gameplay focuses on progressing through clicking only, requiring roughly 2
 
 It incorporates an ascend function for progression, achievements to unlock, and basic game stat tracking, sound and nightmode toggle and some extra mechanics to enhance your gameplay.
 
-Also aded some auto-click restrictions.
+Also added some auto-click restrictions.
