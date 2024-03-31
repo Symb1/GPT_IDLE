@@ -1,7 +1,6 @@
 // JavaScript code for the idle/clicker game
 
 // Re-assignable variables
-
 let currentBossHP = 1000000000; // Starting bossHP
 let startingBossHP = 1000000000; // Initial starting bossHP
 let clickValue = 1; // The amount of damage dealt per click
