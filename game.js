@@ -1,6 +1,7 @@
 // JavaScript code for the idle/clicker game
 
 // Re-assignable variables
+
 let currentBossHP = 1000000000; // Starting bossHP
 let startingBossHP = 1000000000; // Initial starting bossHP
 let clickValue = 1; // The amount of damage dealt per click
@@ -207,7 +208,7 @@ function toggleVisibility() {
         fireBtn.style.display = 'none';
     }
 
-    if (totalUpgrades >= 50) {
+    if (totalUpgrades >= 30) {
         tier1Text.style.display = 'block'; // Show the "Tier 1" text
     } else {
         tier1Text.style.display = 'none'; // Hide the "Tier 1" text
@@ -234,7 +235,7 @@ function toggleVisibility() {
     }
 
     // Show/hide Auto1 button based on totalUpgrades count
-    if (totalUpgrades >= 50) {
+    if (totalUpgrades >= 30) {
         auto1Btn.style.display = 'inline-block';
     } else {
         auto1Btn.style.display = 'none';
@@ -270,7 +271,7 @@ function updateTotalUpgrades() {
     const progressBar = document.getElementById('progress');
 
     // Set color based on total upgrades
-    if (totalUpgrades < 50) {
+    if (totalUpgrades < 30) {
         progressBar.style.backgroundColor = 'red';
     } else if (totalUpgrades < 90) {
         progressBar.style.backgroundColor = 'orange';
@@ -285,7 +286,7 @@ function updateTotalUpgrades() {
     if (totalUpgrades === 10 && !unlockedAchievements.includes("A wild button has appeared!")) {
         showAchievementPopup("A wild button has appeared!");
         unlockedAchievements.push("A wild button has appeared!");
-    } else if (totalUpgrades === 50 && !unlockedAchievements.includes("Tier 1 UNLOCKED")) {
+    } else if (totalUpgrades === 30 && !unlockedAchievements.includes("Tier 1 UNLOCKED")) {
         showAchievementPopup("Tier 1 UNLOCKED");
         unlockedAchievements.push("Tier 1 UNLOCKED");
         if (isAudioOn) {
@@ -333,7 +334,7 @@ function handleAttack() {
         const elapsedTime = now - lastAttackTime; // Calculate the time elapsed since the last click
 
         // Set anti auto clicker restriction
-        if (elapsedTime >= 100) {
+        if (elapsedTime >= 115) {
             currentBossHP -= clickValue;
             updateBossHP();
             animateButtonClick('attackBtn');
@@ -363,7 +364,7 @@ function handleAttack() {
     }
 }
 
-//  Prevents the default action when the Enter key is pressed
+// Prevents the default action when the Enter key is pressed
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
      event.preventDefault(); // Prevent the default action (triggering the Attack! button)
@@ -441,7 +442,7 @@ function handleBoost3() {
 // Function to handle the Auto1 button click
 function handleAuto1() {
     if (auto1Cost <= differenceBetweenBossHP()) {
-        auto1ReductionsPerSecond += 20; // Increase auto1ReductionsPerSecond by 20
+        auto1ReductionsPerSecond += 10; // Increase auto1ReductionsPerSecond by 20
         auto1Upgrades = (auto1Upgrades || 0) + 1; // Update auto1Upgrades
         auto1Cost = calculateAuto1Cost(); // Recalculate Auto1 cost
         updateBossHP();
@@ -493,7 +494,7 @@ function handleAuto2() {
 // Function to handle the Auto3 button click
 function handleAuto3() {
     if (auto3Cost <= differenceBetweenBossHP()) {
-        auto3ReductionsPerSecond += 500;
+        auto3ReductionsPerSecond += 1500;
         auto3Upgrades = (auto3Upgrades || 0) + 1; // Update auto3Upgrades
         auto3Cost = calculateAuto3Cost(); // Recalculate Auto3 cost
         updateBossHP();
@@ -586,7 +587,7 @@ function handleFire() {
 
     if (!isTimerRunning && !isShieldActive) {
         isTimerRunning = true;
-        let timeLeft = 20; // Timer duration in seconds
+        let timeLeft = 15; // Timer duration in seconds
         const fireButton = document.getElementById('fireBtn');
         fireButton.disabled = true; // Disable the Fire button while the timer is running
         const timerCircle = document.getElementById('timerCircle');
@@ -646,7 +647,7 @@ function handleFire() {
                 }
             } else {
                 // Calculate progress percentage
-                const progressPercentage = ((20 - timeLeft) / 20) * 100;
+                const progressPercentage = ((15 - timeLeft) / 15) * 100;
 
                 // Dynamically change stroke color based on progress
                 if (progressPercentage >= 75) {
@@ -1268,14 +1269,14 @@ function calculateBoost3Cost() {
 function calculateAuto1Cost() {
     const difference = startingBossHP - currentBossHP;
     const upgrades3Count = typeof auto1Upgrades === 'undefined' ? 0 : auto1Upgrades;
-    return Math.ceil(startingBossHP * 0.00045 + upgrades3Count * (currentBossHP * 0.0000005 + difference * 0.025)); // Adjust the formula for Auto1 as needed
+    return Math.ceil(startingBossHP * 0.00002 + upgrades3Count * (currentBossHP * 0.0000005 + difference * 0.035)); // Adjust the formula for Auto1 as needed
 }
 
 // Function to calculate Auto2 cost
 function calculateAuto2Cost() {
     const difference = startingBossHP - currentBossHP;
     const upgrades4Count = typeof auto2Upgrades === 'undefined' ? 0 : auto2Upgrades;
-    return Math.ceil(startingBossHP * 0.001 + upgrades4Count * (currentBossHP * 0.000003 + difference * 0.5)); // Adjust the formula for Auto2 as needed
+    return Math.ceil(startingBossHP * 0.00025 + upgrades4Count * (currentBossHP * 0.000003 + difference * 0.45)); // Adjust the formula for Auto2 as needed
 }
 
 // Function to calculate Auto3 cost

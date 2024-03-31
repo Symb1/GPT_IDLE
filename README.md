@@ -56,8 +56,6 @@ I implemented a twist on the typical clicker/idle game concept, where instead of
 
 Because it's technically a demo version or proof of a concept, it was designed for quick playthrough, with completion in under 20 minutes for active players, or around 1-2 hours for those semi-afk idle enjoyers and so the game currently lacks a save mechanic, so ***don't reload*** the page!
 
-Early gameplay focuses on progressing through clicking only, requiring roughly 2000 clicks to progress before transitioning to idle gameplay.
+Early gameplay focuses on progressing through clicking, after a bit you transition to idle gameplay.
 
 It incorporates an ascend function for progression, achievements to unlock, and basic game stat tracking, sound and nightmode toggle and some extra mechanics to enhance your gameplay.
-
-Also aded some auto-click restrictions.
